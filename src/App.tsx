@@ -8,28 +8,44 @@ export const App: React.FC = () => {
   const [goods, setGoods] = useState<Good[]>([]);
 
   const loadAllGoods = async () => {
-    const preparedGoods = await goodsAPI.getAll();
-
-    setGoods(preparedGoods);
+    try {
+      const loadedGoods = await goodsAPI.getAll();
+      setGoods(loadedGoods);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
   };
 
   const load5FirstGoods = async () => {
-    const preparedGoods = await goodsAPI.get5First();
-
-    setGoods(preparedGoods);
+    try {
+      const loadedGoods = await goodsAPI.get5First();
+      setGoods(loadedGoods);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
   };
 
   const loadRedGoods = async () => {
-    const preparedGoods = await goodsAPI.getRed();
-
-    setGoods(preparedGoods);
+    try {
+      const loadedGoods = await goodsAPI.getRed();
+      setGoods(loadedGoods);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
   };
 
   return (
     <div className="App">
       <h1>Dynamic list of Goods</h1>
 
-      <button type="button" data-cy="all-button" onClick={loadAllGoods}>
+      <button
+        type="button"
+        data-cy="all-button"
+        onClick={loadAllGoods}
+      >
         Load all goods
       </button>
 
@@ -41,7 +57,11 @@ export const App: React.FC = () => {
         Load 5 first goods
       </button>
 
-      <button type="button" data-cy="red-button" onClick={loadRedGoods}>
+      <button
+        type="button"
+        data-cy="red-button"
+        onClick={loadRedGoods}
+      >
         Load red goods
       </button>
 
