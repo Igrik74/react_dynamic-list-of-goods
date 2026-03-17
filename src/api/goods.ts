@@ -1,7 +1,7 @@
 import { Good } from '../types/Good';
 
-const API_URL
-  = 'https://mate-academy.github.io/react_dynamic-list-of-goods/goods.json';
+const API_URL =
+  'https://mate-academy.github.io/react_dynamic-list-of-goods/goods.json';
 
 async function request(): Promise<Good[]> {
   const response = await fetch(API_URL);
@@ -20,9 +20,7 @@ export const getAll = (): Promise<Good[]> => {
 export const get5First = async (): Promise<Good[]> => {
   const goods = await request();
 
-  return [...goods]
-    .sort((a, b) => a.name.localeCompare(b.name))
-    .slice(0, 5);
+  return [...goods].sort((a, b) => a.name.localeCompare(b.name)).slice(0, 5);
 };
 
 export const getRed = async (): Promise<Good[]> => {
